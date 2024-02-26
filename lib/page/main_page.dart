@@ -10,7 +10,38 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   String groupSelectedPizza = "";
   String groupValueSize = "";
-  bool isChecked = false;
+
+  int pizza1 = 8;
+  int pizza2 = 10;
+  int pizza3 = 12;
+
+  bool isCheckedAvocado = false;
+  bool isCheckedLobster = false;
+  bool isCheckedBacon = false;
+  bool isCheckedBroccoli = false;
+  bool isCheckedOyster = false;
+  bool isCheckedDuck = false;
+  bool isCheckedOnions = false;
+  bool isCheckedSalmon = false;
+  bool isCheckedHam = false;
+  bool isCheckedZucchini = false;
+  bool isCheckedTuna = false;
+  bool isCheckedSausage = false;
+
+  int avocado = 1;
+  int broccoli = 1;
+  int onions = 1;
+  int zucchini = 1;
+  int lobster = 2;
+  int oyster = 2;
+  int salmon = 2;
+  int tuna = 2;
+  int bacon = 3;
+  int duck = 3;
+  int ham = 3; 
+  int sausage = 3;
+
+  late int totalprice;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +49,7 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: const Text(
           "Pizza",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: Colors.red,
@@ -66,8 +97,8 @@ class _MainPageState extends State<MainPage> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("\$8",
-                           style: TextStyle(
+                         Text("\$ $pizza1",
+                           style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w400
                           ),
@@ -106,8 +137,8 @@ class _MainPageState extends State<MainPage> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("\$10",
-                           style: TextStyle(
+                        Text("\$ $pizza2",
+                           style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w400
                           ),
@@ -146,8 +177,8 @@ class _MainPageState extends State<MainPage> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("\$12",
-                           style: TextStyle(
+                        Text("\$ $pizza3",
+                           style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w400
                           ),
@@ -234,9 +265,9 @@ class _MainPageState extends State<MainPage> {
             ),
             Row(
               children: [
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedAvocado, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedAvocado = value!;
                   });
                 }),
                 const Text("Avocado",
@@ -244,9 +275,9 @@ class _MainPageState extends State<MainPage> {
                     fontSize: 16
                   ),
                 ),
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedLobster, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedLobster = value!;
                   });
                 }),
                 const Text("Lobster",
@@ -254,9 +285,9 @@ class _MainPageState extends State<MainPage> {
                     fontSize: 16
                   ),
                 ),
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedBacon, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedBacon = value!;
                   });
                 }),
                 const Text("Bacon",
@@ -268,9 +299,9 @@ class _MainPageState extends State<MainPage> {
             ),
             Row(
               children: [
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedBroccoli, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedBroccoli = value!;
                   });
                 }),
                 const Text("Broccoli",
@@ -278,9 +309,9 @@ class _MainPageState extends State<MainPage> {
                     fontSize: 16
                   ),
                 ),
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedOyster, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedOyster = value!;
                   });
                 }),
                 const Text("Oyster",
@@ -288,9 +319,9 @@ class _MainPageState extends State<MainPage> {
                     fontSize: 16
                   ),
                 ),
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedDuck, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedDuck = value!;
                   });
                 }),
                 const Text("Duck",
@@ -302,9 +333,9 @@ class _MainPageState extends State<MainPage> {
             ),
             Row(
               children: [
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedOnions, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedOnions = value!;
                   });
                 }),
                 const Text("Onions",
@@ -312,9 +343,9 @@ class _MainPageState extends State<MainPage> {
                     fontSize: 16
                   ),
                 ),
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedSalmon, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedSalmon = value!;
                   });
                 }),
                 const Text("Salmon",
@@ -322,9 +353,9 @@ class _MainPageState extends State<MainPage> {
                     fontSize: 16
                   ),
                 ),
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedHam, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedHam = value!;
                   });
                 }),
                 const Text("Ham",
@@ -336,9 +367,9 @@ class _MainPageState extends State<MainPage> {
             ),
             Row(
               children: [
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedZucchini, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedZucchini = value!;
                   });
                 }),
                 const Text("Zucchini",
@@ -346,9 +377,9 @@ class _MainPageState extends State<MainPage> {
                     fontSize: 16
                   ),
                 ),
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedTuna, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedTuna = value!;
                   });
                 }),
                 const Text("Tuna",
@@ -359,9 +390,9 @@ class _MainPageState extends State<MainPage> {
                 const SizedBox(
                   width: 10,
                 ),
-                Checkbox(value: isChecked, onChanged: (value){
+                Checkbox(value: isCheckedSausage, onChanged: (value){
                   setState(() {
-                    isChecked = value!;
+                    isCheckedSausage = value!;
                   });
                 }),
                 const Text("Sausage",
